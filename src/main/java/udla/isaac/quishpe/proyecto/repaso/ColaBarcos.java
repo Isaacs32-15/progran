@@ -1,32 +1,43 @@
-    package udla.isaac.quishpe.proyecto.repaso;
+package udla.isaac.quishpe.proyecto.repaso;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class ColaBarcos {
 
-    ArrayList<BarcoNombresCompleto> cola;
+    private Queue<BarcoNombresCompleto> cola;
 
     public ColaBarcos() {
-        cola = new ArrayList<>();
+        cola = new LinkedList<>();
     }
 
     // Encolar
     public void encolar(BarcoNombresCompleto b) {
         cola.add(b);
     }
+        //desencolar
+ public String desencolarTexto() {
 
-    // Desencolar
-    public BarcoNombresCompleto desencolar() {
-        if (cola.isEmpty()) {
-            return null;
-        }
-        return cola.remove(0);
+    if (cola.isEmpty()) {
+        return "No hay barcos";
     }
 
+    BarcoNombresCompleto b = cola.poll();
+
+    return "Se eliminó:\n" + b;
+}
+ 
+ public String verPrimero() {
+
+    if (cola.isEmpty()) {
+        return "No hay barcos";
+    }
+
+    return "Primero en la cola:\n" + cola.peek();
+}
     // R1: llenar cola
     public void llenarCola() {
-
-        cola.clear(); // limpia antes
+        cola.clear();
 
         encolar(new BarcoNombresCompleto());
         encolar(new BarcoNombresCompleto("A1", "Toyota", 2010, "Velero"));
@@ -43,7 +54,7 @@ public class ColaBarcos {
             texto += b + "\n";
         }
 
-        return texto;
+        return texto.isEmpty() ? "No hay barcos" : texto;
     }
 
     // R2: calcular costos
@@ -80,12 +91,12 @@ public class ColaBarcos {
     // R3: copiar por marca
     public String copiarPorMarca(String marcaBuscar) {
 
-        ColaBarcos nueva = new ColaBarcos();
+        Queue<BarcoNombresCompleto> nueva = new LinkedList<>();
         String texto = "";
 
         for (BarcoNombresCompleto b : cola) {
             if (b.marca.equalsIgnoreCase(marcaBuscar)) {
-                nueva.encolar(b);
+                nueva.add(b);
             }
         }
 
@@ -95,7 +106,7 @@ public class ColaBarcos {
         }
 
         texto += "\nCOLA COPIADA:\n";
-        for (BarcoNombresCompleto b : nueva.cola) {
+        for (BarcoNombresCompleto b : nueva) {
             texto += b + "\n";
         }
 

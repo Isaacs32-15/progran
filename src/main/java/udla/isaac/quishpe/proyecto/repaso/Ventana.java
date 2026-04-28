@@ -35,6 +35,8 @@ public class Ventana extends javax.swing.JFrame {
         btnCopiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
+        btnDesencolar = new javax.swing.JButton();
+        txtPrimero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +55,12 @@ public class Ventana extends javax.swing.JFrame {
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
 
+        btnDesencolar.setText("Desencolar");
+        btnDesencolar.addActionListener(this::btnDesencolarActionPerformed);
+
+        txtPrimero.setText("Pico");
+        txtPrimero.addActionListener(this::txtPrimeroActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -61,12 +69,18 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(btnLlenar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addComponent(btnCostos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCopiar)
-                .addGap(41, 41, 41))
+                .addGap(18, 18, 18)
+                .addComponent(btnDesencolar)
+                .addContainerGap(9, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtPrimero)
+                .addGap(155, 155, 155))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,8 +92,11 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLlenar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCostos)
-                    .addComponent(btnCopiar))
-                .addGap(34, 34, 34))
+                    .addComponent(btnCopiar)
+                    .addComponent(btnDesencolar))
+                .addGap(5, 5, 5)
+                .addComponent(txtPrimero)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,6 +130,17 @@ public class Ventana extends javax.swing.JFrame {
         txtArea.setText(cola.copiarPorMarca(marca));
     }//GEN-LAST:event_btnCopiarActionPerformed
 
+    private void btnDesencolarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencolarActionPerformed
+        // TODO add your handling code here:
+        txtArea.setText(cola.desencolarTexto());
+    }//GEN-LAST:event_btnDesencolarActionPerformed
+
+    private void txtPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrimeroActionPerformed
+        // TODO add your handling code here:
+        txtArea.setText(cola.verPrimero());
+    }//GEN-LAST:event_txtPrimeroActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -141,10 +169,12 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCopiar;
     private javax.swing.JButton btnCostos;
+    private javax.swing.JButton btnDesencolar;
     private javax.swing.JButton btnLlenar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtArea;
+    private javax.swing.JButton txtPrimero;
     // End of variables declaration//GEN-END:variables
 }
